@@ -4,6 +4,6 @@
 
 <template>
   <div>
-    Code Coffee!
+    Code Coffee
   </div>
 </template>
