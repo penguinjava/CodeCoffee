@@ -10,10 +10,18 @@ async fn main() {
     let app = Router::new().route("/", get(root));
 
     // 3) 리스너 바인딩
-    let listener = tokio::net::TcpListener::bind("0.0.0.0:8080")
+    let listener = tokio::net::TcpListener::bind("localhost:8080")
         .await
         .unwrap();
 
     // 4) axum::serve 호출
-    axum::serve(listener, app).await.unwrap();
+    axum::serve(listener, app).await.expect("서버 실행중 치명적 에러 발생!"); // unwrap() 대신 서버 패닉 + 메세지 호출로 변경 
+
+    //운영때 위 대신 사용하는 것
+    // };// let contents = match std::fs::read_to_string("config.toml") {
+    //     Ok(s) => s,
+    //     Err(e) => {
+    //         tracing::error!("config.toml 파일 읽기 실패: {}", e);
+    //         return Err(AppError::ConfigLoadFailed);
+    //     }
 }
