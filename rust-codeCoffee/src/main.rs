@@ -1,8 +1,10 @@
 use axum::{routing::{get,post},Json, Router, response::IntoResponse,};         // Server는 더 이상 import 불필요
 use std::net::SocketAddr;
-
+use rust_codeCoffee::db::connection::establish_connection;
 #[tokio::main]
 async fn main() {
+
+    let dbcon = establish_connection().await.expect("db 연결 중 치명적 에러 발생!");
     // 1) 핸들러 정의
     async fn root() -> &'static str { "Hello, axum 0.8.4!" }
 
