@@ -1,1 +1,10 @@
 .idea/
+
+# Rust 빌드 산출물
+rust-codeCoffee/target/
+rust-codeCoffee/target/debug/
+rust-codeCoffee/target/rust-analyzer/
+rust-codeCoffee/target/.rustc_info.json
+
+# 환경 변수 파일
+.env
